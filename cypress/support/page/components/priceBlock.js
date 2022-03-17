@@ -1,4 +1,4 @@
-export class PriceRefinements {
+export class PriceBlock {
 
     constructor() {
         this.minPriceFilter = '#low-price';
@@ -6,7 +6,7 @@ export class PriceRefinements {
         this.goButton = '#a-autoid-1';
     }
 
-    setFilterPrice(from, to) {
+    setPriceFilter(from, to) {
         this.typeMinPrice(from);
         this.typeMaxPrice(to);
         this.clickGoButton();
@@ -30,4 +30,4 @@ export class PriceRefinements {
 
 }
 
-export const priceRefinements = new PriceRefinements();
+export const priceBlock = new PriceBlock();

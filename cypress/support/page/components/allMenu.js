@@ -1,11 +1,11 @@
 export class AllMenu {
-    
+
     constructor() {
         this.languageButton = '#hmenu-icp-language';
     }
 
     languageButtonText() {
-       return cy.get(this.languageButton).invoke('text');
+        return cy.get(this.languageButton).invoke('text');
     }
 
     clickLanguageButton() {

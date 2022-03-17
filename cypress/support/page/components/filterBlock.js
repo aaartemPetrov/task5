@@ -1,20 +1,19 @@
-import { priceRefinements } from "./priceRefinements";
-import { raitingRefinements } from "./raitingRefinements";
+import { priceBlock } from "./priceBlock";
+import { raitingBlock } from "./raitingBlock";
 
 export class FilterBlock {
 
-
     constructor() {
-        this.priceRefinements = priceRefinements;
-        this.raitingRefinements = raitingRefinements;
+        this.priceBlock = priceBlock;
+        this.raitingBlock = raitingBlock;
     }
 
-    getPriceRefinements() {
-        return this.priceRefinements;
+    getPriceBlock() {
+        return this.priceBlock;
     }
 
-    getRaitingRefinements() {
-        return this.raitingRefinements;
+    getRaitingBlock() {
+        return this.raitingBlock;
     }
 
     locator() {

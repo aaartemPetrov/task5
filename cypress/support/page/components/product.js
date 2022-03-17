@@ -16,7 +16,7 @@ export class Product {
 
     getStarRaitingAsNumber() {
         return cy.get(this.starRaiting).then(raiting => {
-           return cy.wrap(Number(raiting.text().substring(0, raiting.text().indexOf(' '))));
+            return cy.wrap(Number(raiting.text().substring(0, raiting.text().indexOf(' '))));
         });
     }
 

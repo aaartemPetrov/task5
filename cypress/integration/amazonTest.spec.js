@@ -12,18 +12,18 @@ describe('Amazon test', () => {
         homePage.visit();
     })
 
-    it('Search & Filtering products by raiting.', () => { 
+    it('Search & Filtering products by raiting.', () => {
         homePage.searchProduct(testData.searchedBrand);
         searchResultPage.getProducts().getTitles().should('contain', testData.searchedBrand);
-        searchResultPage.getFilterBlock().getPriceRefinements().setFilterPrice(testData.fromPrice, testData.toPrice);
-        searchResultPage.getFilterBlock().getRaitingRefinements().chooseRaitingHigherThan(testData.starRaiting);
+        searchResultPage.getFilterBlock().getPriceBlock().setPriceFilter(testData.fromPrice, testData.toPrice);
+        searchResultPage.getFilterBlock().getRaitingBlock().setRaitingHigherThan(testData.starRaiting);
         searchResultPage.getProducts().getStarRaitingAsNumber().should('be.greaterThan', testData.starRaiting);
-    }) 
+    })
 
     it('Search & Filtering products by price.', () => {
         homePage.searchProduct(testData.searchedBrand);
         searchResultPage.getProducts().getTitles().should('contain', testData.searchedBrand);
-        searchResultPage.getFilterBlock().getPriceRefinements().setFilterPrice(testData.fromPrice, testData.toPrice);
+        searchResultPage.getFilterBlock().getPriceBlock().setPriceFilter(testData.fromPrice, testData.toPrice);
         searchResultPage.getProducts().getPrices().each(stringPrice => {
             const price = Number(stringPrice.text().substring(1, stringPrice.text().indexOf('.')));
             expect(price).greaterThan(testData.fromPrice);

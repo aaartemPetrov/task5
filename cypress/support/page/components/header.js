@@ -11,7 +11,6 @@ export class Header {
         this.topMenu = topMenu;
     }
 
-
     validateHeader() {
         //async
         cy.log('ASYNC: ');

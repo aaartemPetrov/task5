@@ -13,8 +13,8 @@ export class CustomerPreferencesPage {
     chooseLanguageRadioButton(language = 'English') {
         cy.get(this.languageRadioButton).should('exist').each(radioButton => {
             cy.wrap(radioButton).parent().find('.a-radio-label').invoke('text').then(text => {
-                if(text.includes(language)) {
-                    cy.wrap(radioButton).check({force: true});
+                if (text.includes(language)) {
+                    cy.wrap(radioButton).check({ force: true });
                 }
             })
         })
