@@ -21,7 +21,7 @@ export class CustomerPreferencesPage {
     }
 
     clickSaveChangesButton() {
-        cy.get(this.saveChangesButton).should('exist').click();
+        cy.get(this.saveChangesButton).click();
     }
 
 }

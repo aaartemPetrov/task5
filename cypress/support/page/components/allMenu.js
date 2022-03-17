@@ -1,21 +1,19 @@
 export class AllMenu {
     
     constructor() {
-        this.allMenuLocator = '#hmenu-canvas';
-
         this.languageButton = '#hmenu-icp-language';
     }
 
     languageButtonText() {
-       return cy.get(this.languageButton).should('be.visible').invoke('text');
+       return cy.get(this.languageButton).invoke('text');
     }
 
     clickLanguageButton() {
-        cy.get(this.languageButton).should('be.visible').should('exist').click();
+        cy.get(this.languageButton).click();
     }
 
     locator() {
-        return this.allMenuLocator;
+        return '#hmenu-canvas';
     }
 
 }

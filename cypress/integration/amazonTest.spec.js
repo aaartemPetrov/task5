@@ -11,13 +11,32 @@ describe('Amazon test', () => {
     beforeEach('visit home page', () => {
         homePage.visit();
     })
-    
-    it.only('Validate Home Page', () => {
+
+    it('Search & Filtering products by raiting.', () => { 
+        homePage.searchProduct(testData.searchedBrand);
+        searchResultPage.getProducts().getTitles().should('contain', testData.searchedBrand);
+        searchResultPage.getFilterBlock().getPriceRefinements().setFilterPrice(testData.fromPrice, testData.toPrice);
+        searchResultPage.getFilterBlock().getRaitingRefinements().chooseRaitingHigherThan(testData.starRaiting);
+        searchResultPage.getProducts().getStarRaitingAsNumber().should('be.greaterThan', testData.starRaiting);
+    }) 
+
+    it('Search & Filtering products by price.', () => {
+        homePage.searchProduct(testData.searchedBrand);
+        searchResultPage.getProducts().getTitles().should('contain', testData.searchedBrand);
+        searchResultPage.getFilterBlock().getPriceRefinements().setFilterPrice(testData.fromPrice, testData.toPrice);
+        searchResultPage.getProducts().getPrices().each(stringPrice => {
+            const price = Number(stringPrice.text().substring(1, stringPrice.text().indexOf('.')));
+            expect(price).greaterThan(testData.fromPrice);
+            expect(price).lessThan(testData.toPrice);
+        })
+    })
+
+    it.skip('Validate Home Page.', () => {
         homePage.validateHomePage();
         cy.log('Home page is valide.');
     })
 
-    it('Change language check', () => {
+    it.skip('Change language check.', () => {
         homePage.getHeader().getTopMenu().clickAllMenuButton();
         homePage.saveChosenLanguageAsVar('oldLanguage');
         homePage.getHeader().getTopMenu().getAllMenu().clickLanguageButton();
@@ -32,15 +51,15 @@ describe('Amazon test', () => {
                 expect(oldLanguage).not.equal(newLanguage);
             })
         })
-       
+
     })
 
-    it('Search', () => {
+    it.skip('Search.', () => {
         homePage.searchProduct(testData.searchedBrand);
         searchResultPage.getProducts().getTitles().should('contain', testData.searchedBrand);
     })
 
-    it('login', () => {
+    it.skip('login.', () => {
         cy.amazonLogin(Cypress.env('email'), Cypress.env('password'));
         homePage.visit();
     })

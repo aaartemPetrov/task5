@@ -3,8 +3,6 @@ import { allMenu } from "./allMenu";
 export class TopMenu {
 
     constructor() {
-        this.topMenuLocator = '#nav-main';
-
         this.allMenuButton = '#nav-hamburger-menu';
 
         this.allMenu = allMenu;
@@ -27,7 +25,7 @@ export class TopMenu {
     }
 
     clickAllMenuButton() {
-        cy.get(this.allMenuButton).should('exist').should('be.visible').click();
+        cy.get(this.allMenuButton).click();
     }
 
     getAllMenu() {
@@ -35,7 +33,7 @@ export class TopMenu {
     }
 
     locator() {
-        return this.topMenuLocator;
+        return '#nav-main';
     }
 
 }
